@@ -1,7 +1,7 @@
 #include <FreeRTOS.h>
 #include <task.h>
 #include <driver/gpio.h>
-#include <ds18b20.h>
+#include "../extras/ds18b20/ds18b20.h"
 
 #include "config.h"
 #include "my_homekit.h"
