@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\freertos\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\freertos\port\esp8266\include\freertos\;c:\msys32\home\Sasha\esp\Termostat2\build\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\esp8266\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>c:\My\GitHub\_work\Termostat\sources\VS\includes\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\esp8266\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\freertos\port\esp8266\include\freertos\;c:\msys32\home\Sasha\esp\Termostat2\build\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\freertos\include\freertos\private\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\freertos\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\heap\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\esp_common\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\heap\port\esp8266\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\spi_flash\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
