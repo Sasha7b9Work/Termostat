@@ -1,7 +1,19 @@
 PROJECT_NAME := Thermostat
 
-
 EXTRA_COMPONENT_DIRS := extras
+
+IDIR =  ../extras
+
+CFLAGS += -I$(IDIR)
+
+include $(IDF_PATH)/make/project.mk
+
+
+
+
+
+
+
 
 #PROGRAM_SRC_DIR = src
 #LIBS ?= gcc hal m
@@ -35,4 +47,3 @@ EXTRA_COMPONENT_DIRS := extras
 
 
 #include $(SDK_PATH)common.mk
-include $(IDF_PATH)/make/project.mk

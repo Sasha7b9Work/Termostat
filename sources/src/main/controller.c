@@ -19,7 +19,7 @@
 //#include "my_homekit.h"
 #include "temperature_sensor.h"
 #include "heater.h"
-#include "update.h"
+//#include "update.h"
 #include <esp_sleep.h>
 
 //#include "wifi_config.h"
@@ -764,7 +764,7 @@ static void controller_refresh_screen(controller_t *controller)
 
     case CONTROLLER_SCREEN_UPDATE:
     {
-        check_ota();
+//        check_ota();
         char p[4];
         snprintf(p, 4, "%03d", GIT_VERSION);
         controller_display(controller, DISPLAY_VERSION, p);
