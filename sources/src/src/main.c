@@ -22,7 +22,7 @@
 
 static char *ssid;
 
-void user_init(void)
+void app_main(void)
 {
 #if CONFIG_THERMOSTAT_DEBUG
     uart_set_baud(0, 115200);

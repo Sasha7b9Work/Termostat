@@ -30,5 +30,5 @@ EXTRA_CFLAGS += -DHOMEKIT_DEBUG="\"$(CONFIG_THERMOSTAT_DEBUG)\""
 EXTRA_CFLAGS += -DWIFI_CONFIG_DEBUG="\"$(CONFIG_THERMOSTAT_DEBUG)\""
 
 
-
-include $(SDK_PATH)common.mk
+#include $(SDK_PATH)common.mk
+include $(IDF_PATH)/make/project.mk
