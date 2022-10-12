@@ -446,37 +446,37 @@ static void controller_display(controller_t *controller, char *format, ...)
     }
 }
 
-static void controller_read_command(controller_t *controller)
-{
-    char *cmd = controller->read_buffer;
-    uint8_t cmd_size = controller->read_buffer_pos;
-
-    {
-        char *debug_buffer = malloc(64);
-
-        size_t left_chars = 63;
-        char *p = debug_buffer;
-        for (int i=0; i<controller->read_buffer_pos && left_chars >= 3; i++) {
-            size_t size = snprintf(p, left_chars, " %02X", cmd[i]);
-            p += size;
-            left_chars -= size;
-        }
-        *p = 0;
-        DEBUG("received command \"%s\"", debug_buffer);
-        free(debug_buffer);
-    }
-
-    while (cmd_size && cmd[0] == 0xD1) {
-        cmd++;
-        cmd_size--;
-    }
-
-    if (!cmd_size)
-        return;
-
-    controller_process_command(cmd, cmd_size);
-
-}
+//static void controller_read_command(controller_t *controller)
+//{
+//    char *cmd = controller->read_buffer;
+//    uint8_t cmd_size = controller->read_buffer_pos;
+//
+//    {
+//        char *debug_buffer = malloc(64);
+//
+//        size_t left_chars = 63;
+//        char *p = debug_buffer;
+//        for (int i=0; i<controller->read_buffer_pos && left_chars >= 3; i++) {
+//            size_t size = snprintf(p, left_chars, " %02X", cmd[i]);
+//            p += size;
+//            left_chars -= size;
+//        }
+//        *p = 0;
+//        DEBUG("received command \"%s\"", debug_buffer);
+//        free(debug_buffer);
+//    }
+//
+//    while (cmd_size && cmd[0] == 0xD1) {
+//        cmd++;
+//        cmd_size--;
+//    }
+//
+//    if (!cmd_size)
+//        return;
+//
+//    controller_process_command(cmd, cmd_size);
+//
+//}
 
 static bool startExist;
 

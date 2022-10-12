@@ -1,20 +1,22 @@
-#PROGRAM = HK_Thermostat
 PROJECT_NAME := Thermostat
+
+
+EXTRA_COMPONENT_DIRS := extras
 
 #PROGRAM_SRC_DIR = src
 #LIBS ?= gcc hal m
 
-EXTRA_COMPONENTS = \
-    extras/esp-homekit \
+#EXTRA_COMPONENTS = \
+#    extras/homekit \
+#    extras/ds18b20 \
+#    extras/http-client-ota
 
 #    extras/http-parser \
 #    extras/dhcpserver \
 #    extras/onewire \
-#    extras/ds18b20 \
 #    extras/softuart \
 #    extras/rboot-ota \
 #    extras/mbedtls \
-#    extras/http_client_ota \
 #    extras/esp-wolfssl \
 #    extras/esp-cjson \
 #    extras/esp-wifi-config \
