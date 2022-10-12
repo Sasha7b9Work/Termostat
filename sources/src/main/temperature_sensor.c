@@ -1,6 +1,6 @@
 #include <FreeRTOS.h>
 #include <task.h>
-#include <esp/gpio.h>
+#include <driver/gpio.h>
 #include <ds18b20/ds18b20.h>
 
 #include "config.h"

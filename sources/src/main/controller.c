@@ -1050,7 +1050,7 @@ static void controller_process_notifications(controller_t *controller)
             if (notification.save)
             {
                 printf("event target 1 \n");
-                printf("event target set %i \n", sysparam_set_bool("target_state", controller->target_state));
+//                printf("event target set %i \n", sysparam_set_bool("target_state", controller->target_state));
             }
             else
             {
@@ -1058,16 +1058,16 @@ static void controller_process_notifications(controller_t *controller)
                 if (notification.int_value > 0)
                 {
                     printf("event target ts 2.1 \n");
-                    printf("event target get %i \n", sysparam_get_bool("target_state", &controller->target_state));
+//                    printf("event target get %i \n", sysparam_get_bool("target_state", &controller->target_state));
                 }
             }
-            my_homekit_set_target_state(controller->target_state);
+//            my_homekit_set_target_state(controller->target_state);
             controller_update_state(controller);
             printf("\n");
             break;
 
         case CONTROLLER_EVENT_SENSOR_TYPE:
-            sysparam_set_int8("sensor_type", notification.int_value);
+//            sysparam_set_int8("sensor_type", notification.int_value);
             controller->sensor_type = notification.int_value;
             controller_display_sensor_type(controller);
             controller_update_state(controller);
@@ -1077,7 +1077,7 @@ static void controller_process_notifications(controller_t *controller)
 
         case CONTROLLER_EVENT_HYSTERESIS:
             controller->hysteresis = MIN(5, MAX(1, notification.int_value));
-            sysparam_set_int8("hysteresis", controller->hysteresis);
+//            sysparam_set_int8("hysteresis", controller->hysteresis);
             controller_display_hysteresis(controller);
             controller_display_hist_shift_label(controller);
             controller_update_state(controller);
@@ -1085,7 +1085,7 @@ static void controller_process_notifications(controller_t *controller)
 
         case CONTROLLER_EVENT_TEMP_SHIFT:
             controller->temp_shift = MIN(5, MAX(-5, notification.float_value));
-            sysparam_set_int32("temp_shift", (int)(controller->temp_shift*10));
+//            sysparam_set_int32("temp_shift", (int)(controller->temp_shift*10));
             controller_display_temp_shift(controller);
             controller_display_hist_shift_label(controller);
             controller_update_state(controller);
@@ -1121,17 +1121,17 @@ static void controller_process_notifications(controller_t *controller)
                 controller->update_started = false;
                 controller_display_update_percent(controller);
 
-                bool need_update = false;
-                if ((sysparam_get_bool("need_update", &need_update) == SYSPARAM_OK) && (need_update))
-                {
-                    controller_display(controller, DISPLAY_HK_LOADING);
+//                bool need_update = false;
+//                if ((sysparam_get_bool("need_update", &need_update) == SYSPARAM_OK) && (need_update))
+//                {
+//                    controller_display(controller, DISPLAY_HK_LOADING);
 //                    sdk_system_restart();
-                    sdk_system_deep_sleep(500000);
-                }
-                else
-                {
-                    controller_display(controller, DISPLAY_RESTORE);
-                }
+//                    sdk_system_deep_sleep(500000);
+//              }
+//              else
+//              {
+//                  controller_display(controller, DISPLAY_RESTORE);
+//              }
             }
             else
                 if (controller->update_percent < 101)
@@ -1140,7 +1140,7 @@ static void controller_process_notifications(controller_t *controller)
                 }
                 else
                 {
-                    sysparam_set_bool("need_update", false);
+//                    sysparam_set_bool("need_update", false);
                     controller_display(controller, DISPLAY_HK_LOADING);
                 }
             break;
@@ -1165,28 +1165,28 @@ static void controller_process_notifications(controller_t *controller)
 
                 if (!controller->wifi_connected && notification.bool_value) //connected
                 {
-                    bool need_update = false;
-                    if ((sysparam_get_bool("need_update", &need_update) == SYSPARAM_OK) && (need_update))
-                    {
-                        controller_display(controller, DISPLAY_UPDATE_PAGE);
-                        controller_display_update_percent(controller);
-                        controller->update_started = true;
-                        startUpdate();
-                    }
-                    else
-                    {
-                        my_homekit_init(controller_get_name());
-
-                        if (controller->have_homekit_pair)
-                        {
-                            controller_display(controller, DISPLAY_TEMP);
-                            startCheckUpdate();
-                        }
-                        else
-                        {
-                            controller_display(controller, DISPLAY_SENSOR_PAGE);
-                        }
-                    }
+//                    bool need_update = false;
+//                    if ((sysparam_get_bool("need_update", &need_update) == SYSPARAM_OK) && (need_update))
+//                    {
+//                        controller_display(controller, DISPLAY_UPDATE_PAGE);
+//                        controller_display_update_percent(controller);
+//                        controller->update_started = true;
+//                        startUpdate();
+//                    }
+//                    else
+//                    {
+//                        my_homekit_init(controller_get_name());
+//
+//                        if (controller->have_homekit_pair)
+//                        {
+//                            controller_display(controller, DISPLAY_TEMP);
+//                            startCheckUpdate();
+//                        }
+//                        else
+//                        {
+//                            controller_display(controller, DISPLAY_SENSOR_PAGE);
+//                        }
+//                    }
                 }
                 else //disconnected
                 {
@@ -1197,17 +1197,17 @@ static void controller_process_notifications(controller_t *controller)
             else
             {//Status don`t change
 
-                char *ssid = wifi_config_get_ssid();
-
-                if (ssid != NULL)
-                {
-                    free(ssid);
-                    controller_display(controller, DISPLAY_HK_LOADING);
-                }
-                else
-                {
-                    controller_display(controller, DISPLAY_CONF);
-                }
+//                char *ssid = wifi_config_get_ssid();
+//
+//                if (ssid != NULL)
+//                {
+//                    free(ssid);
+//                    controller_display(controller, DISPLAY_HK_LOADING);
+//                }
+//                else
+//                {
+//                    controller_display(controller, DISPLAY_CONF);
+//                }
 
             }
 

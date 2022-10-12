@@ -4,22 +4,22 @@
 #include "heater.h"
 #include "config.h"
 
-_Bool inited = _False;
+_Bool inited = 0;
 
 void heater_init()
 {
-    gpio_write(CONFIG_HEATER_RELAY_GPIO, !(CONFIG_HEATER_RELAY_ACTIVE));
-    gpio_enable(CONFIG_HEATER_RELAY_GPIO, GPIO_OUTPUT);
-    inited = true;
+//    gpio_set_level(CONFIG_HEATER_RELAY_GPIO, !(CONFIG_HEATER_RELAY_ACTIVE));
+//    gpio_set_direction(CONFIG_HEATER_RELAY_GPIO, GPIO_OUTPUT);
+    inited = 1;
 }
 
 
-void heater_write(bool on)
+void heater_write(_Bool on)
 {
     printf("Setting heater %s\n", on ? "on" : "off");
 
     if (inited)
     {
-        gpio_write(CONFIG_HEATER_RELAY_GPIO, on ? (CONFIG_HEATER_RELAY_ACTIVE) : !(CONFIG_HEATER_RELAY_ACTIVE));
+        gpio_set_level(CONFIG_HEATER_RELAY_GPIO, on ? (CONFIG_HEATER_RELAY_ACTIVE) : !(CONFIG_HEATER_RELAY_ACTIVE));
     }
 }
