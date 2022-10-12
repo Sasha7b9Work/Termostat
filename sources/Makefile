@@ -5,5 +5,6 @@
 
 PROJECT_NAME := Termostat2
 
-include $(IDF_PATH)/make/project.mk
+EXTRA_COMPONENT_DIRS = ${TERMOSTAT_DIR}/extras/ds18b20
 
+include $(IDF_PATH)/make/project.mk
