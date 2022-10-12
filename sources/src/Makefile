@@ -4,7 +4,9 @@ PROJECT_NAME := Thermostat
 #PROGRAM_SRC_DIR = src
 #LIBS ?= gcc hal m
 
-#EXTRA_COMPONENTS = \
+EXTRA_COMPONENTS = \
+    extras/esp-homekit \
+
 #    extras/http-parser \
 #    extras/dhcpserver \
 #    extras/onewire \
@@ -15,7 +17,6 @@ PROJECT_NAME := Thermostat
 #    extras/http_client_ota \
 #    extras/esp-wolfssl \
 #    extras/esp-cjson \
-#    extras/esp-homekit \
 #    extras/esp-wifi-config \
 
 #EXTRA_CFLAGS += -I../.. -DHOMEKIT_SHORT_APPLE_UUIDS

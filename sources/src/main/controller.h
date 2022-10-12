@@ -188,8 +188,8 @@ MODES controller_get_mode();
 float controller_get_current_temperature();
 float controller_get_target_temperature();
 
-const float controller_get_min_target_temperature();
-const float controller_get_max_target_temperature();
+float controller_get_min_target_temperature();
+float controller_get_max_target_temperature();
 
 int controller_get_current_state();
 int controller_get_target_state();

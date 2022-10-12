@@ -11,17 +11,18 @@
 #include <task.h>
 #include <queue.h>
 #include <event_groups.h>
-#include <softuart/softuart.h>
-#include <sysparam.h>
+#include <driver/uart.h>
+//#include <sysparam.h>
 
 
 #include "config.h"
-#include "my_homekit.h"
+//#include "my_homekit.h"
 #include "temperature_sensor.h"
 #include "heater.h"
 #include "update.h"
+#include <esp_sleep.h>
 
-#include "wifi_config.h"
+//#include "wifi_config.h"
 
 #define SHUTDOWN_FLAG (1 << 0)
 
@@ -380,30 +381,30 @@ static void controller_update_state(controller_t *controller)
                 MAX(controller->min_target_temperature,
                     controller->target_temperature));
 
-    if (controller->target_state == MY_HOMEKIT_TARGET_STATE_OFF)
-    {
-        heater_disable();
-        my_homekit_set_current_state(MY_HOMEKIT_CURRENT_STATE_OFF);
-        controller->current_state = 0;
-    }
-    else if (controller->target_state == MY_HOMEKIT_TARGET_STATE_HEAT)
-    {
-        float hysteresis_adj = controller->hysteresis == 0.0 ? CONFIG_HEATER_HYSTERESIS : controller->hysteresis;
-
-        if (controller->current_temperature >= controller->target_temperature)
-        {
-            heater_disable();
-            controller->current_state = 0;
-            my_homekit_set_current_state(MY_HOMEKIT_CURRENT_STATE_OFF);
-        }
-        else
-            if (controller->current_temperature <= (controller->target_temperature - hysteresis_adj))
-            {
-                heater_enable();
-                controller->current_state = 1;
-                my_homekit_set_current_state(MY_HOMEKIT_CURRENT_STATE_HEATING);
-            }
-    }
+//    if (controller->target_state == MY_HOMEKIT_TARGET_STATE_OFF)
+//    {
+//        heater_disable();
+//        my_homekit_set_current_state(MY_HOMEKIT_CURRENT_STATE_OFF);
+//        controller->current_state = 0;
+//    }
+//    else if (controller->target_state == MY_HOMEKIT_TARGET_STATE_HEAT)
+//    {
+//        float hysteresis_adj = controller->hysteresis == 0.0 ? CONFIG_HEATER_HYSTERESIS : controller->hysteresis;
+//
+//        if (controller->current_temperature >= controller->target_temperature)
+//        {
+//            heater_disable();
+//            controller->current_state = 0;
+//            my_homekit_set_current_state(MY_HOMEKIT_CURRENT_STATE_OFF);
+//        }
+//        else
+//            if (controller->current_temperature <= (controller->target_temperature - hysteresis_adj))
+//            {
+//                heater_enable();
+//                controller->current_state = 1;
+//                my_homekit_set_current_state(MY_HOMEKIT_CURRENT_STATE_HEATING);
+//            }
+//    }
 
     controller_display_current_temperature(controller);
     controller_display_target_temperature(controller);
@@ -433,10 +434,10 @@ static void controller_display(controller_t *controller, char *format, ...)
 
     DEBUG("sending command \"%s\"", buffer);
     taskENTER_CRITICAL();
-    softuart_puts(controller->uart_no, buffer);
-    softuart_put(controller->uart_no, 0xff);
-    softuart_put(controller->uart_no, 0xff);
-    softuart_put(controller->uart_no, 0xff);
+//    softuart_puts(controller->uart_no, buffer);
+//    softuart_put(controller->uart_no, 0xff);
+//    softuart_put(controller->uart_no, 0xff);
+//    softuart_put(controller->uart_no, 0xff);
     taskEXIT_CRITICAL();
 
     if (extra_buffer)
@@ -480,49 +481,49 @@ static void controller_read_command(controller_t *controller)
 static bool startExist;
 
 static void controller_process_serial(controller_t *controller) {
-    while (softuart_available(controller->uart_no)) {
-        uint8_t c = softuart_read(controller->uart_no);
-
-        //        if (c == 0x1a || c == 0xd1 || c == 0xd0 || c == 0xe8 || c == 0xd2 || c == 0xf7  || c == 0x7f || c == 0xdf)
-        //            continue;
-
-        if (c == 0x0 && !startExist)
-        {
-            continue;
-        }
-
-        if (c == 0x66 || c == 0x65)
-        {
-            controller->read_buffer_pos = 0;
-            controller->marker_count = 0;
-            startExist = true;
-        }
-
-        if (c == 0xff)
-        {
-            if (++controller->marker_count >= 3)
-            {
-                if (controller->read_buffer_pos)
-                {
-                    controller_read_command(controller);
-                    startExist = false;
-                }
-                // Do not hog processing
-                taskYIELD();
-
-                controller->read_buffer_pos = 0;
-                controller->marker_count = 0;
-            }
-        }
-        else
-        {
-            if (controller->read_buffer_pos < sizeof(controller->read_buffer))
-            {
-                controller->read_buffer[controller->read_buffer_pos++] = c;
-                controller->marker_count = 0;
-            }
-        }
-    }
+//    while (softuart_available(controller->uart_no)) {
+//        uint8_t c = softuart_read(controller->uart_no);
+//
+//        //        if (c == 0x1a || c == 0xd1 || c == 0xd0 || c == 0xe8 || c == 0xd2 || c == 0xf7  || c == 0x7f || c == 0xdf)
+//        //            continue;
+//
+//        if (c == 0x0 && !startExist)
+//        {
+//            continue;
+//        }
+//
+//        if (c == 0x66 || c == 0x65)
+//        {
+//            controller->read_buffer_pos = 0;
+//            controller->marker_count = 0;
+//            startExist = true;
+//        }
+//
+//      if (c == 0xff)
+//      {
+//          if (++controller->marker_count >= 3)
+//          {
+//              if (controller->read_buffer_pos)
+//              {
+//                  controller_read_command(controller);
+//                  startExist = false;
+//              }
+//              // Do not hog processing
+//              taskYIELD();
+//
+//              controller->read_buffer_pos = 0;
+//              controller->marker_count = 0;
+//          }
+//      }
+//      else
+//      {
+//          if (controller->read_buffer_pos < sizeof(controller->read_buffer))
+//          {
+//              controller->read_buffer[controller->read_buffer_pos++] = c;
+//              controller->marker_count = 0;
+//          }
+//      }
+//  }
 }
 
 static void controller_task(void *param)
@@ -537,7 +538,7 @@ static void controller_task(void *param)
         vTaskDelayMs(10);
     }
 
-    softuart_close(controller->uart_no);
+//    softuart_close(controller->uart_no);
 
     controller_free(controller);
     controller = NULL;
@@ -580,15 +581,15 @@ void controller_start()
     }
 
     c->mode=0;
-    sysparam_get_int8("mode", &c->mode);
+//    sysparam_get_int8("mode", &c->mode);
     c->mode =
             MIN(1,
                 MAX(0,
                     c->mode));
 
-    c->name_size = snprintf(NULL, 0, TEMPLATE_NAME, sdk_system_get_chip_id());
+//    c->name_size = snprintf(NULL, 0, TEMPLATE_NAME, sdk_system_get_chip_id());
     c->name = malloc(c->name_size);
-    snprintf(c->name, c->name_size+1, TEMPLATE_NAME, sdk_system_get_chip_id());
+//    snprintf(c->name, c->name_size+1, TEMPLATE_NAME, sdk_system_get_chip_id());
 
     if (c->mode == THERMOSTAT)
     {
@@ -605,17 +606,17 @@ void controller_start()
 
     c->uart_no = 0;
     c->locked = false;
-    sysparam_get_bool("locked", &c->locked);
+//    sysparam_get_bool("locked", &c->locked);
 
 
     c->have_homekit_pair = false;
 //                                sysparam_set_bool("have_homekit_pair", true);
-    sysparam_get_bool("have_homekit_pair", &c->have_homekit_pair);
+//    sysparam_get_bool("have_homekit_pair", &c->have_homekit_pair);
 
     c->current_temperature = temperature_sensor_get_temperature();
 
     int8_t target_temperature_local = 0;
-    sysparam_get_int8("target_temperature", &target_temperature_local);
+//    sysparam_get_int8("target_temperature", &target_temperature_local);
     c->target_temperature =
             MIN(c->max_target_temperature,
                 MAX(c->min_target_temperature,
@@ -623,21 +624,21 @@ void controller_start()
 
 
     c->target_state = false;
-    sysparam_get_bool("target_state", &c->target_state);
+//    sysparam_get_bool("target_state", &c->target_state);
 
     c->sensor_type=0;
-    sysparam_get_int8("sensor_type", &c->sensor_type);
+//    sysparam_get_int8("sensor_type", &c->sensor_type);
     c->sensor_type =
             MIN(CONFIG_SENSOR_COUNT,
                 MAX(0,
                     c->sensor_type));
 
     c->hysteresis=1;
-    sysparam_get_int8("hysteresis", &c->hysteresis);
+//    sysparam_get_int8("hysteresis", &c->hysteresis);
     c->hysteresis = MIN(5, MAX(1, c->hysteresis));
 
     int temp_shift = 0;
-    sysparam_get_int32("temp_shift", &temp_shift);
+//    sysparam_get_int32("temp_shift", &temp_shift);
     c->temp_shift = MIN(5, MAX(-5, temp_shift * 0.1));
 
     c->wifi_connected = false;
@@ -648,12 +649,12 @@ void controller_start()
 
     printf("Device name: %s\n", c->name);
 
-    if (!softuart_open(c->uart_no, 9600, CONFIG_DISPLAY_RX_GPIO, CONFIG_DISPLAY_TX_GPIO))
-    {
-        ERROR("Failed to intialize soft UART");
-        controller_free(c);
-        return;
-    }
+//    if (!softuart_open(c->uart_no, 9600, CONFIG_DISPLAY_RX_GPIO, CONFIG_DISPLAY_TX_GPIO))
+//    {
+//        ERROR("Failed to intialize soft UART");
+//        controller_free(c);
+//        return;
+//    }
 
     controller = c;
     if (xTaskCreate(controller_task, "Ctrl", 512, NULL, 2, NULL) != pdTRUE)
@@ -888,20 +889,20 @@ static void controller_process_command(char *cmd, uint8_t cmd_size)
                 {
                     controller_display(controller, DISPLAY_HK_LOADING);
 
-                    homekit_storage_reset();
+//                    homekit_storage_reset();
 
-                    printf("wifi_config_reset = %s \n", wifi_config_reset() ? "true" : "false");
+//                    printf("wifi_config_reset = %s \n", wifi_config_reset() ? "true" : "false");
 
-                    sysparam_set_int8("mode", 0);
-                    sysparam_set_bool("have_homekit_pair", false);
-                    sysparam_set_bool("locked", false);
-                    sysparam_set_int8("target_temperature", 0);
-                    sysparam_set_bool("target_state", false);
-                    sysparam_set_int8("sensor_type", 0);
-                    sysparam_set_int8("hysteresis", 0);
-                    sysparam_set_int32("temp_shift", 0);
+//                    sysparam_set_int8("mode", 0);
+//                  sysparam_set_bool("have_homekit_pair", false);
+//                  sysparam_set_bool("locked", false);
+//                  sysparam_set_int8("target_temperature", 0);
+//                  sysparam_set_bool("target_state", false);
+//                  sysparam_set_int8("sensor_type", 0);
+//                  sysparam_set_int8("hysteresis", 0);
+//                  sysparam_set_int32("temp_shift", 0);
 //                    sdk_system_restart();
-                    sdk_system_deep_sleep(500000);
+                    esp_deep_sleep(500000);
 
                 }
                 else
@@ -913,12 +914,12 @@ static void controller_process_command(char *cmd, uint8_t cmd_size)
                             if (!controller->update_started)
                             {
                                 printf("need update is ");
-                                if (sysparam_set_bool("need_update", true) == SYSPARAM_OK)
-                                {
-                                    printf ("ok\n");
+//                                if (sysparam_set_bool("need_update", true) == SYSPARAM_OK)
+//                                {
+//                                    printf ("ok\n");
 //                                    sdk_system_restart();
-                                    sdk_system_deep_sleep(500000);
-                                }
+//                                    sdk_system_deep_sleep(500000);
+//                                }
                                 printf ("not ok\n");
                                 //go to update-mode
                             }
@@ -933,12 +934,12 @@ static void controller_process_command(char *cmd, uint8_t cmd_size)
                             case 0x1:
                                 controller_display_update_percent(controller);
                                 controller->update_started = true;
-                                startUpdateRestore();
+//                                startUpdateRestore();
                                 break;
                             case 0xD:
                                 controller_display_update_percent(controller);
                                 controller->update_started = true;
-                                startUpdateSpecial();
+//                                startUpdateSpecial();
                                 break;
                             }
                         }
@@ -956,19 +957,19 @@ static void controller_process_notifications(controller_t *controller)
         case CONTROLLER_EVENT_LOCKED:
             controller->locked = notification.bool_value;
 
-            sysparam_set_bool("locked", controller->locked);
+//            sysparam_set_bool("locked", controller->locked);
 
             controller_display_locked(controller);
             break;
 
         case CONTROLLER_EVENT_MODE:
-            sysparam_set_int8("mode", notification.int_value);
+//            sysparam_set_int8("mode", notification.int_value);
             controller->mode = notification.int_value;
             if (controller->name != NULL)
                 free(controller->name);
-            controller->name_size = snprintf(NULL, 0, TEMPLATE_NAME, sdk_system_get_chip_id());
+//            controller->name_size = snprintf(NULL, 0, TEMPLATE_NAME, esp_get_chip_id());
             controller->name = malloc(controller->name_size);
-            snprintf(controller->name, controller->name_size+1, TEMPLATE_NAME, sdk_system_get_chip_id());
+//            snprintf(controller->name, controller->name_size+1, TEMPLATE_NAME, sdk_system_get_chip_id());
 
             if (controller->mode == THERMOSTAT)
             {
@@ -990,12 +991,12 @@ static void controller_process_notifications(controller_t *controller)
             {
                 controller->have_homekit_pair = notification.bool_value;
 
-                sysparam_set_bool("have_homekit_pair", notification.bool_value);
+//                sysparam_set_bool("have_homekit_pair", notification.bool_value);
 
                 if (controller->have_homekit_pair)
                 {
                     controller_display(controller, DISPLAY_TEMP);
-                    startCheckUpdate();
+//                    startCheckUpdate();
                 }
                 else
                 {
@@ -1034,8 +1035,8 @@ static void controller_process_notifications(controller_t *controller)
                         MAX(controller->min_target_temperature,
                             notification.float_value));
 
-            my_homekit_set_target_temperature(controller->target_temperature);
-            sysparam_set_int8("target_temperature", (int8_t)controller->target_temperature);
+//            my_homekit_set_target_temperature(controller->target_temperature);
+//            sysparam_set_int8("target_temperature", (int8_t)controller->target_temperature);
             controller_update_state(controller);
             break;
 

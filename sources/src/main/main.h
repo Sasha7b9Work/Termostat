@@ -1,6 +1,6 @@
 #pragma once
 
-#include "wifi_config.h"
+#include "esp_wifi.h"
 
 void on_wifi_event(wifi_config_event_t event);
 

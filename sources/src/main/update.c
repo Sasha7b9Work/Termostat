@@ -10,7 +10,7 @@
 #include <FreeRTOS.h>
 #include <task.h>
 
-#include "http_client_ota.h"
+//#include "http_client_ota.h"
 
 #include "controller.h"
 

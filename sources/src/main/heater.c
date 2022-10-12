@@ -1,10 +1,10 @@
 #include <stdio.h>
-#include <esp/gpio.h>
+#include <driver/gpio.h>
 
 #include "heater.h"
 #include "config.h"
 
-bool inited = false;
+_Bool inited = _False;
 
 void heater_init()
 {

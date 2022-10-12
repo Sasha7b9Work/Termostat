@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-#include <espressif/esp_system.h>
+#include <esp_system.h>
 
 #include <homekit/homekit.h>
 #include <homekit/characteristics.h>
