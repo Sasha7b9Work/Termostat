@@ -10,7 +10,7 @@
 
 #include <math.h>
 
-#include <esp/hwrand.h>
+#include "hwrand.h"
 
 static float temperature = 0.0;
 static int fail = 0;
@@ -26,7 +26,7 @@ void sendTemperature()
     switch (controller_get_sensor_type())
     {
     case DS18B20:
-        local_temp = ds18b20_read_single(CONFIG_TEMPERATURE_DIGIT_SENSOR_GPIO); //A0
+        local_temp = ds18b20_read(CONFIG_TEMPERATURE_DIGIT_SENSOR_GPIO); //A0
         break;
     case NTC3_3:
         local_temp =  calc_temp(4000, 3300, 25, RESISTOR_T);
