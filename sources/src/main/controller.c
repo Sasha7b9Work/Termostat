@@ -17,7 +17,7 @@
 
 #include "config.h"
 //#include "my_homekit.h"
-#include "temperature_sensor.h"
+//#include "temperature_sensor.h"
 #include "heater.h"
 //#include "update.h"
 #include <esp_sleep.h>

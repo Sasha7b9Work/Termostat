@@ -38,7 +38,7 @@
 #ifndef DRIVER_DS18B20_INTERFACE_H
 #define DRIVER_DS18B20_INTERFACE_H
 
-#include "driver_ds18b20.h"
+#include "../src/driver_ds18b20.h"
 
 #ifdef __cplusplus
 extern "C"{

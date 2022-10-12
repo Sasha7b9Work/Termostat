@@ -2,7 +2,7 @@
 
 #include "esp_wifi.h"
 
-void on_wifi_event(wifi_config_event_t event);
+void on_wifi_event(WIFI_EVENT event);
 
 static void wifiscan_task(void *pvParameter);
 
