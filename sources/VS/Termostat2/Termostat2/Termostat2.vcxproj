@@ -20,10 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\main\main.c" />
-    <ClCompile Include="..\..\..\main\temperature_sensor.c" />
+    <ClCompile Include="..\..\..\main\temp_sensor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\main\temperature_sensor.h" />
+    <ClInclude Include="..\..\..\main\defines.h" />
+    <ClInclude Include="..\..\..\main\temp_sensor.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

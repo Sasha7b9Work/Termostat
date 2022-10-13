@@ -2,9 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\..\..\main\main.c" />
-    <ClCompile Include="..\..\..\main\temperature_sensor.c" />
+    <ClCompile Include="..\..\..\main\temp_sensor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\main\temperature_sensor.h" />
+    <ClInclude Include="..\..\..\main\temp_sensor.h" />
+    <ClInclude Include="..\..\..\main\defines.h" />
   </ItemGroup>
 </Project>
