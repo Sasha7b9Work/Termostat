@@ -12,7 +12,9 @@ static void TaskLoop(void *cookie)
     {
         float temperature = 0.0f;
 
-        if (TempS_CurrentTemperature(&temperature))
+        static TemperatureSensor sensor;
+
+        if (sensor.CurrentTemperature(&temperature))
         {
             Heater_Process(temperature);
         }

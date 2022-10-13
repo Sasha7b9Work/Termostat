@@ -2,4 +2,10 @@
 #pragma once
 
 
-bool TempS_CurrentTemperature(float *out);
+class TemperatureSensor
+{
+public:
+    bool CurrentTemperature(float *out);
+private:
+    float Calculate(uint16);
+};
