@@ -1,23 +1,25 @@
 // 2022/10/13 16:23:33 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
+#include "TemperatureSensor.h"
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
-#include <driver/adc.h>
 
 
 static void TaskLoop(void *cookie)
 {
-    vTaskDelay(1000 / portTICK_RATE_MS);
-
     while (1)
     {
-        uint16 value = 0;
+        bool result = 0;
 
-        if (adc_read(&value))
+        float temperature = TempS_CurrentTemperature(&result);
+
+        if (result)
         {
 
         }
     }
+
+    vTaskDelay(1000 / portTICK_RATE_MS);
 }
 
 

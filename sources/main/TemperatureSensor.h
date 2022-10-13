@@ -2,3 +2,5 @@
 #pragma once
 
 
+// Если измерин
+float TempS_CurrentTemperature(bool &result);
