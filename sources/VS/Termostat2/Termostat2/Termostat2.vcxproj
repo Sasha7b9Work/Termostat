@@ -20,12 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\main\Heater.cpp" />
-    <ClCompile Include="..\..\..\main\main.c" />
+    <ClCompile Include="..\..\..\main\main.cpp" />
     <ClCompile Include="..\..\..\main\TemperatureSensor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\main\defines.h" />
-    <ClInclude Include="..\..\..\main\Header.h" />
+    <ClInclude Include="..\..\..\main\Heater.h" />
     <ClInclude Include="..\..\..\main\TemperatureSensor.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

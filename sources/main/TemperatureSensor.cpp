@@ -7,7 +7,7 @@
 static float TempS_Calculate(uint16);
 
 
-float TempS_CurrentTemperature(bool &result)
+bool TempS_CurrentTemperature(float *result)
 {
     static float prev_value = 0.0;
 
@@ -15,13 +15,17 @@ float TempS_CurrentTemperature(bool &result)
 
     if (adc_read(&raw_value))
     {
+        *result = TempS_Calculate(raw_value);
 
+        return true;
     }
+
+    return false;
 }
 
 
 static float TempS_Calculate(uint16 raw_value)
 {
-
+    return 0.0f;
 }
 

@@ -3,7 +3,3 @@
 
 
 typedef unsigned short uint16;
-
-#ifndef _WIN32
-typedef int bool;
-#endif
