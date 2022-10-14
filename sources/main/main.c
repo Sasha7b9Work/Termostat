@@ -1,5 +1,7 @@
 // 2022/10/13 16:23:33 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include <string.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #include <driver/gpio.h>
 #include <driver/uart.h>
 
