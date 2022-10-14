@@ -1,4 +1,2 @@
-idf_component_register(SRCS "main.cpp"
-                            "Heater.cpp"
-                            "TemperatureSensor.cpp"
+idf_component_register(SRCS "main.c"
                        INCLUDE_DIRS ".")
