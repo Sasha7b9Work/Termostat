@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Termostat2", "Termostat2\Termostat2.vcxproj", "{F8A235EE-BADB-4D61-9E47-393145470A5A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gluer", "Gluer\Gluer.vcxproj", "{4BD38080-9EBF-47FA-9E72-2436535C667E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{F8A235EE-BADB-4D61-9E47-393145470A5A}.Release|x64.Build.0 = Release|x64
 		{F8A235EE-BADB-4D61-9E47-393145470A5A}.Release|x86.ActiveCfg = Release|Win32
 		{F8A235EE-BADB-4D61-9E47-393145470A5A}.Release|x86.Build.0 = Release|Win32
+		{4BD38080-9EBF-47FA-9E72-2436535C667E}.Debug|x64.ActiveCfg = Debug|x64
+		{4BD38080-9EBF-47FA-9E72-2436535C667E}.Debug|x64.Build.0 = Debug|x64
+		{4BD38080-9EBF-47FA-9E72-2436535C667E}.Debug|x86.ActiveCfg = Debug|Win32
+		{4BD38080-9EBF-47FA-9E72-2436535C667E}.Debug|x86.Build.0 = Debug|Win32
+		{4BD38080-9EBF-47FA-9E72-2436535C667E}.Release|x64.ActiveCfg = Release|x64
+		{4BD38080-9EBF-47FA-9E72-2436535C667E}.Release|x64.Build.0 = Release|x64
+		{4BD38080-9EBF-47FA-9E72-2436535C667E}.Release|x86.ActiveCfg = Release|Win32
+		{4BD38080-9EBF-47FA-9E72-2436535C667E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
