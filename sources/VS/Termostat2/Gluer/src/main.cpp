@@ -52,11 +52,8 @@ static void AppendFile(vector<uint8_t> &bytes, const string &file_name, unsigned
 
     if (file.is_open())
     {
-        int counter = 0;
-
         while (!file.eof())
         {
-            counter++;
             char byte = 0;
             file.read(&byte, 1);
             bytes.push_back((uint8)byte);
