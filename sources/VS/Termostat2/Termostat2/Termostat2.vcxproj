@@ -19,10 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\main\main.c" />
+    <ClCompile Include="..\..\..\main\main.cpp" />
+    <ClCompile Include="..\..\..\main\MainTask.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\main\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\main\MainTask.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
