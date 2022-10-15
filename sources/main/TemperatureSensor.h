@@ -29,5 +29,8 @@ public:
     DataTSensor CurrentTemperature();
 
 private:
+
+    TemperatureSensor();
+
     float Calculate(uint16);
 };

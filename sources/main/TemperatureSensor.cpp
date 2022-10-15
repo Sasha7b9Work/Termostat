@@ -4,6 +4,23 @@
 #include <driver/adc.h>
 
 
+TemperatureSensor *TemperatureSensor::self = nullptr;
+
+
+TemperatureSensor::TemperatureSensor()
+{
+
+}
+
+
+void TemperatureSensor::Create()
+{
+    static TemperatureSensor sensor;
+
+    self = &sensor;
+}
+
+
 DataTSensor TemperatureSensor::CurrentTemperature()
 {
     uint16 raw_value = 0;
