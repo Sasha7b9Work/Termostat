@@ -145,12 +145,16 @@ void tempWorks()
   }
 } 
   
-float NTCgettemperature(uint32_t nominalResistance, uint32_t seriesResistance, uint16_t betaCoefficient, uint8_t nominalTemperature, uint8_t samples){
+float NTCgettemperature(uint32_t nominalResistance, uint32_t seriesResistance, uint16_t betaCoefficient, uint8_t nominalTemperature, uint8_t samples)
+{
     float average = 0;
     float temp = 0;
-    for (uint8_t i = 0; i < samples; i++) {
+
+    for (uint8_t i = 0; i < samples; i++)
+    {
         average += analogRead(A0);
     }
+
     average /= samples;
     
     // convert the value to resistance

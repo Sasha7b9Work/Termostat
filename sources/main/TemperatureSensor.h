@@ -31,4 +31,8 @@ public:
 private:
 
     float Calculate(uint16);
+
+    float CalculateNTC(uint nom_res, uint ser_res, uint16 betaK, uint8 temp, uint8 samples);
+
+    float AnalogRead();
 };
