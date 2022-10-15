@@ -15,14 +15,14 @@ static void MainTask(void *cookie)
     {
         UART0::Send("Point 2");
 
-//        volatile auto temp = TemperatureSensor::self->CurrentTemperature();
+        auto temp = TemperatureSensor::self->CurrentTemperature();
 
-//        if (temp.IsValid())
-//        {
-//            Heater::self->Process(temp.temp);
-//        }
-//
-//        UART0::Send("Point 3");
+        if (temp.IsValid())
+        {
+            Heater::self->Process(temp.temp);
+        }
+
+        UART0::Send("Point 3");
 
         vTaskDelay(1000 / portTICK_RATE_MS);
     }
@@ -52,7 +52,7 @@ void app_main()
 
     Heater::Init();
 
-//    Heater::self->SetTargetTemperature(35.0f);
+    Heater::self->SetTargetTemperature(35.0f);
 
     UART0::Send("Point 1");
 
