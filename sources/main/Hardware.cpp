@@ -23,3 +23,24 @@ void UART0::Send(pchar message)
 {
     uart_write_bytes(UART_NUM_0, message, std::strlen(message) + 1);
 }
+
+
+void GPIO::Init(gpio_num_t pin)
+{
+    if (pin == GPIO_NUM_2)
+    {
+        gpio_config_t io_conf;
+        io_conf.intr_type = GPIO_INTR_DISABLE;
+        io_conf.mode = GPIO_MODE_OUTPUT;
+        io_conf.pin_bit_mask = GPIO_NUM_2;
+        io_conf.pull_down_en = GPIO_PULLDOWN_ENABLE;
+        io_conf.pull_up_en = GPIO_PULLUP_DISABLE;
+        gpio_config(&io_conf);
+    }
+}
+
+
+void GPIO::Set(gpio_num_t pin, uint value)
+{
+    gpio_set_level(pin, value);
+}

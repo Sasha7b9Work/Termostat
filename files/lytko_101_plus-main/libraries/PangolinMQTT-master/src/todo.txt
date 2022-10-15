@@ -1,0 +1,9 @@
+
+SOONEST:
+SOON:
+    "Hamza's fix" RL overflow prevention
+    add back in some more advanced examples
+MEDIUM-TERM:
+    coalesce templates wehn c++17 if constexpr available
+DREAMLAND:
+    LittleFS FULL QoS2 recovery (needs root n branch change to "Method b")

@@ -1,0 +1,64 @@
+#######################################
+# Syntax Coloring Map For H4
+#######################################
+
+#######################################
+# Library (KEYWORD1)
+#######################################
+
+H4	KEYWORD1
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+h4	KEYWORD1
+H4_TASK_PTR	KEYWORD1
+H4_TIMER	KEYWORD1
+H4_FN_TIF	KEYWORD1
+H4_FN_VOID	KEYWORD1
+H4_FN_COUNT	KEYWORD1
+H4_INT_MAP	KEYWORD1
+H4_FN_COUNT	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+cancel	KEYWORD2
+cancelAll	KEYWORD2
+cancelSingleton	KEYWORD2
+h4Chunker	KEYWORD2
+createPartial	KEYWORD2
+every	KEYWORD2
+endF	KEYWORD2
+endU	KEYWORD2
+endC	KEYWORD2
+endK	KEYWORD2
+everyRandom	KEYWORD2
+finishEarly	KEYWORD2
+finishIf	KEYWORD2
+finishNow	KEYWORD2
+getPartial	KEYWORD2
+hookReboot	KEYWORD2
+h4reboot	KEYWORD2
+h4setup	KEYWORD2
+loop	KEYWORD2
+nTimes	KEYWORD2
+nTimesRandom	KEYWORD2
+once	KEYWORD2
+onceRandom	KEYWORD2
+pr	KEYWORD2
+putPartial	KEYWORD2
+queueFunction	KEYWORD2
+randomTimes	KEYWORD2
+randomRange	KEYWORD2
+randomTimesRandom	KEYWORD2
+repeatWhile	KEYWORD2
+repeatWhileEver	KEYWORD2
+requeue	KEYWORD2
+schedule	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################

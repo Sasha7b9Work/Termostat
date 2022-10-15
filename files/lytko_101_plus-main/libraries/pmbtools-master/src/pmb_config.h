@@ -1,0 +1,5 @@
+#define PMBTOOLS_VERSION "0.5.0"
+
+#define PMB_PWM_DEFAULT 48000
+#define PMB_DEBUG           0
+#define PMB_HEAP_SAFETY  4096

@@ -1,0 +1,29 @@
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+AardvarkTCP	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+VARK_PRINT1	KEYWORD2
+VARK_PRINT2	KEYWORD2
+VARK_PRINT3	KEYWORD2
+VARK_PRINT4	KEYWORD2
+
+getMaxPayloadSize	KEYWORD2
+onTCPconnect	KEYWORD2
+onTCPdisconnect	KEYWORD2
+onTCPerror	KEYWORD2
+onTCPpoll	KEYWORD2
+rx	KEYWORD2
+TCPconnect	KEYWORD2
+TCPdisconnect	KEYWORD2
+TCPurl	KEYWORD2
+txdata	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################

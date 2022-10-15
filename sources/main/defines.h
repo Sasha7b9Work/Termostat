@@ -4,6 +4,7 @@
 
 typedef unsigned short uint16;
 typedef const char *pchar;
+typedef unsigned int uint;
 
 
 #include <freertos/FreeRTOS.h>
