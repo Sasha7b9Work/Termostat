@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Hardware.h"
 #include <driver/uart.h>
+#include <driver/adc.h>
 #include <cstring>
 
 
@@ -43,4 +44,27 @@ void GPIO::Init(gpio_num_t pin)
 void GPIO::Set(gpio_num_t pin, uint value)
 {
     gpio_set_level(pin, value);
+}
+
+
+void ADC::Init()
+{
+    adc_config_t config;
+
+    config.mode = ADC_READ_TOUT_MODE;
+    config.clk_div = 8;
+
+    adc_init(&config);
+}
+
+
+bool ADC::Read(uint16 *value)
+{
+    uint16 adc = 0;
+
+    bool result = adc_read(&adc);
+
+    *value = adc;
+
+    return result;
 }

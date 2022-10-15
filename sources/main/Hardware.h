@@ -17,3 +17,11 @@ namespace GPIO
 
     void Set(gpio_num_t pin, uint);
 }
+
+
+namespace ADC
+{
+    void Init();
+
+    bool Read(uint16 *);
+}

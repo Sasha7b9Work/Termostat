@@ -1,6 +1,7 @@
 // 2022/10/13 17:25:21 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "TemperatureSensor.h"
+#include "Hardware.h"
 #include <driver/adc.h>
 
 
@@ -12,6 +13,8 @@ void TemperatureSensor::Create()
     static TemperatureSensor sensor;
 
     self = &sensor;
+
+    ADC::Init();
 }
 
 
@@ -21,7 +24,7 @@ DataTSensor TemperatureSensor::CurrentTemperature()
 
     DataTSensor result;
 
-    if (adc_read(&raw_value))
+    if (ADC::Read(&raw_value))
     {
         result.SetTemperature(Calculate(raw_value));
     }
