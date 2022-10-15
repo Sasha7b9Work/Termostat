@@ -9,7 +9,7 @@
 TemperatureSensor *TemperatureSensor::self = nullptr;
 
 
-void TemperatureSensor::Create()
+void TemperatureSensor::Init()
 {
     static TemperatureSensor sensor;
 

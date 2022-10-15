@@ -5,7 +5,8 @@
 class Heater
 {
 public:
-    static void Create();
+    static void Init();
+
     static Heater *self;
 
     void Process(float temperature);

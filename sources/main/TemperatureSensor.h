@@ -22,7 +22,7 @@ class TemperatureSensor
 {
 public:
 
-    static void Create();
+    static void Init();
 
     static TemperatureSensor *self;
 

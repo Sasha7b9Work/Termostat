@@ -34,9 +34,9 @@ void app_main()
 
     UART0::Init();
 
-    TemperatureSensor::Create();
+    TemperatureSensor::Init();
 
-    Heater::Create();
+    Heater::Init();
 
     Heater::self->SetTargetTemperature(35.0f);
 

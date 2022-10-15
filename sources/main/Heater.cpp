@@ -10,7 +10,7 @@ Heater *Heater::self = nullptr;
 #define PIN_HEATER GPIO_NUM_15
 
 
-void Heater::Create()
+void Heater::Init()
 {
     static Heater heather;
 
