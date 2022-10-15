@@ -30,8 +30,6 @@ extern "C" {
 
 void app_main()
 {
-    GPIO::Init(GPIO_NUM_2);
-
     UART0::Init();
 
     TemperatureSensor::Init();
