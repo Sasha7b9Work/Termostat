@@ -82,11 +82,18 @@ float averageTemp() {
   return average;
 }
 
-void tempWorks() {
+void tempWorks()
+{
   float last_t = temp_;
-  if(int_sens.is==1) {
-    if(int_sens.ds_htu==0)int_sens.temp = sensors.getTempC(intDS)-6;
-    else {
+
+  if(int_sens.is==1)
+  {
+    if(int_sens.ds_htu==0)
+    {
+        int_sens.temp = sensors.getTempC(intDS)-6;
+    }
+    else
+    {
       int_sens.temp = htu.getTemperature() - 7;
       htu.requestTemperature();
       h4.once(90,[](){htu.readTemperature();
@@ -95,22 +102,47 @@ void tempWorks() {
       });
     }
   }
-  if(int_sens.is==2) int_sens.temp = htu.getTemperature();
-  if(ds==1) {
-    temp_ = sensors.getTempC(tempSensor);
-    if(int_sens.is==1 && int_sens.ds_htu==0 && int_sens.temp==(temp_-6)) temp_ = 0;
+
+  if(int_sens.is==2)
+  {
+    int_sens.temp = htu.getTemperature();
   }
-  else if(R0>9000) temp_ = NTCgettemperature(R0, 2200, B, 25, 1);
-  else temp_ = NTCgettemperature(R0, 1100, B, 25, 1);
+  if(ds==1)
+  {
+    temp_ = sensors.getTempC(tempSensor);
+    if(int_sens.is==1 && int_sens.ds_htu==0 && int_sens.temp==(temp_-6))
+    {
+      temp_ = 0;
+    }
+  }
+  else if(R0>9000)
+  {
+      temp_ = NTCgettemperature(R0, 2200, B, 25, 1);
+  }
+  else
+  {
+    temp_ = NTCgettemperature(R0, 1100, B, 25, 1);
+  }
+
   //Serial.println(current_temp[temp_index]);
-  if (temp_ == -127) {temp_ = last_t; /*tempSensorHealth-= 30;*/}
+  if (temp_ == -127)
+  {
+      temp_ = last_t; /*tempSensorHealth-= 30;*/
+  }
+
   //if (temp_ < - 40) {temp_ = last_t; tempSensorHealth-= 30;}
   //else if (temp_ == 85) {temp_ = last_t; tempSensorHealth-= 30;} 
   //     else {tempSensorHealth = 100; } 
   //if (tempSensorHealth<0) tempSensorHealth = 0;
+
   last_t = 0.2 * temp_ + 0.8 * last_t;
+
   temp_ = last_t;
-  if(ds==1 || (int_sens.is==1 && int_sens.ds_htu==0)) sensors.requestTemperatures();
+
+  if(ds==1 || (int_sens.is==1 && int_sens.ds_htu==0))
+  {
+      sensors.requestTemperatures();
+  }
 } 
   
 float NTCgettemperature(uint32_t nominalResistance, uint32_t seriesResistance, uint16_t betaCoefficient, uint8_t nominalTemperature, uint8_t samples){
