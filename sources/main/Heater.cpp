@@ -22,11 +22,11 @@ void Heater::Create()
 
 void Heater::Process(float temperature)
 {
-    if (temperature > source_temp)
+    if (temperature > target_temp)
     {
         Disable();
     }
-    else if (temperature < (source_temp - hysteresis))
+    else if (temperature < (target_temp - hysteresis))
     {
         Enable();
     }

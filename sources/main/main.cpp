@@ -38,6 +38,8 @@ void app_main()
 
     Heater::Create();
 
+    Heater::self->SetTargetTemperature(35.0f);
+
     xTaskCreate(MainTask, "MainTask", 1024, NULL, 5, NULL);
 }
 

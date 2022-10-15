@@ -12,9 +12,11 @@ public:
 
     void SetHysteresis(float hyst) { hysteresis = hyst; };
 
+    void SetTargetTemperature(float target) { target_temp = target; }
+
 private:
     float hysteresis = 0.0f;        // Задача - поддерживать температуру в промежутке [source_temp...(source_temp - hysteresis)]
-    float source_temp = 0.0f;
+    float target_temp = 0.0f;
 
     void Enable();
     void Disable();
