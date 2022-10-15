@@ -28,7 +28,7 @@ void UART0::Send(pchar message)
     std::strcpy(buffer, message);
     std::strcat(buffer, "\n");
 
-    uart_write_bytes(UART_NUM_0, message, std::strlen(message) + 1);
+    uart_write_bytes(UART_NUM_0, buffer, std::strlen(buffer) + 1);
 }
 
 
