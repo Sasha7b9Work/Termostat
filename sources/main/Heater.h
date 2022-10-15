@@ -2,4 +2,11 @@
 #pragma once
 
 
-void Heater_Process(float temperature);
+class Heather
+{
+public:
+    static void Create();
+    static Heather *self;
+
+    void Process(float temperature);
+};

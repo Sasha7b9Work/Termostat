@@ -2,10 +2,32 @@
 #pragma once
 
 
+struct DataTSensor
+{
+    float temp;
+
+    DataTSensor() : temp(0.0f), valid(false) {}
+    void SetTemperature(float _temp)
+    {
+        temp = _temp;
+        valid = true;
+    }
+    bool IsValid() { return valid; }
+private:
+    bool valid;
+};
+
+
 class TemperatureSensor
 {
 public:
-    bool CurrentTemperature(float *out);
+
+    static void Create();
+
+    static TemperatureSensor *self;
+
+    DataTSensor CurrentTemperature();
+
 private:
     float Calculate(uint16);
 };

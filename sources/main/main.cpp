@@ -1,6 +1,8 @@
 // 2022/10/13 16:23:33 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware.h"
+#include "TemperatureSensor.h"
+#include "Heater.h"
 #include <cstring>
 
 
@@ -9,13 +11,14 @@
 
 static void MainTask(void *cookie)
 {
-    static int counter = 0;
-
     while (1)
     {
-        GPIO::Set(GPIO_NUM_2, counter++ % 2);
+        auto temp = TemperatureSensor::self->CurrentTemperature();
 
-        UART0::Send("Test message");
+        if (temp.IsValid())
+        {
+
+        }
 
         vTaskDelay(1000 / portTICK_RATE_MS);
     }
@@ -30,6 +33,8 @@ void app_main()
     GPIO::Init(GPIO_NUM_2);
 
     UART0::Init();
+
+    TemperatureSensor::Create();
 
     xTaskCreate(MainTask, "MainTask", 1024, NULL, 5, NULL);
 }

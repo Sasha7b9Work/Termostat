@@ -4,18 +4,18 @@
 #include <driver/adc.h>
 
 
-bool TemperatureSensor::CurrentTemperature(float *result)
+DataTSensor TemperatureSensor::CurrentTemperature()
 {
     uint16 raw_value = 0;
 
+    DataTSensor result;
+
     if (adc_read(&raw_value))
     {
-        *result = Calculate(raw_value);
-
-        return true;
+        result.SetTemperature(Calculate(raw_value));
     }
 
-    return false;
+    return result;
 }
 
 
