@@ -24,6 +24,10 @@ void UART0::Init()
 
 void UART0::Send(pchar message)
 {
+    char buffer[128] = { 0 };
+    std::strcpy(buffer, message);
+    std::strcat(buffer, "\n");
+
     uart_write_bytes(UART_NUM_0, message, std::strlen(message) + 1);
 }
 
