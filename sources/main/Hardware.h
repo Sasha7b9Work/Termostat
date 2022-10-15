@@ -13,9 +13,15 @@ namespace UART0
 
 namespace GPIO
 {
-    void Init(gpio_num_t pin);
+    void Init(gpio_num_t);
 
-    void Set(gpio_num_t pin, uint);
+    void Set(gpio_num_t, uint);
+
+    void Set(gpio_num_t);
+
+    void Reset(gpio_num_t);
+
+    bool IsHi(gpio_num_t);
 }
 
 
