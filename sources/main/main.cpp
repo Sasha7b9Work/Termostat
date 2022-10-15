@@ -1,10 +1,10 @@
 // 2022/10/13 16:23:33 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#include "MainTask.h"
-#include <string.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
+#include "defines.h"
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
 #include <driver/gpio.h>
 #include <driver/uart.h>
+#include <cstring>
 
 
 #define BUF_SIZE (1024)
@@ -12,11 +12,15 @@
 
 static void MainTask(void *cookie)
 {
-    NS1::MainTask task;
-
     while (1)
     {
-        task.Update();
+        static int counter = 0;
+
+        gpio_set_level(GPIO_NUM_2, counter++ % 2);
+
+        const char *message = "Test message";
+
+        uart_write_bytes(UART_NUM_0, message, std::strlen(message) + 1);
 
         vTaskDelay(1000 / portTICK_RATE_MS);
     }

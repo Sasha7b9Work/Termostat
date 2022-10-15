@@ -2,12 +2,15 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\..\..\main\main.cpp" />
-    <ClCompile Include="..\..\..\main\MainTask.cpp" />
+    <ClCompile Include="..\..\..\main\TemperatureSensor.cpp" />
+    <ClCompile Include="..\..\..\main\Heater.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\main\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\main\MainTask.h" />
+    <ClInclude Include="..\..\..\main\TemperatureSensor.h" />
+    <ClInclude Include="..\..\..\main\defines.h" />
+    <ClInclude Include="..\..\..\main\Heater.h" />
   </ItemGroup>
 </Project>

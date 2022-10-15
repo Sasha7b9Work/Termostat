@@ -19,14 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\main\Heater.cpp" />
     <ClCompile Include="..\..\..\main\main.cpp" />
-    <ClCompile Include="..\..\..\main\MainTask.cpp" />
+    <ClCompile Include="..\..\..\main\TemperatureSensor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\main\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\main\MainTask.h" />
+    <ClInclude Include="..\..\..\main\defines.h" />
+    <ClInclude Include="..\..\..\main\Heater.h" />
+    <ClInclude Include="..\..\..\main\TemperatureSensor.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
