@@ -121,7 +121,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>$(SolutionDir)..\..\scripts\after_build.bat</Command>
+      <Command>cd $(SolutionDir)..\..\scripts\
+call after_build.bat</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
