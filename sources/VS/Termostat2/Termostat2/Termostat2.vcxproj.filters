@@ -4,6 +4,7 @@
     <ClCompile Include="..\..\..\main\main.cpp" />
     <ClCompile Include="..\..\..\main\TemperatureSensor.cpp" />
     <ClCompile Include="..\..\..\main\Heater.cpp" />
+    <ClCompile Include="..\..\..\main\Hardware.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\main\CMakeLists.txt" />
@@ -12,5 +13,6 @@
     <ClInclude Include="..\..\..\main\TemperatureSensor.h" />
     <ClInclude Include="..\..\..\main\defines.h" />
     <ClInclude Include="..\..\..\main\Heater.h" />
+    <ClInclude Include="..\..\..\main\Hardware.h" />
   </ItemGroup>
 </Project>

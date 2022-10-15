@@ -22,12 +22,14 @@
     <ClCompile Include="..\..\..\main\Heater.cpp" />
     <ClCompile Include="..\..\..\main\main.cpp" />
     <ClCompile Include="..\..\..\main\TemperatureSensor.cpp" />
+    <ClCompile Include="..\..\..\main\Hardware.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\main\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\main\defines.h" />
+    <ClInclude Include="..\..\..\main\Hardware.h" />
     <ClInclude Include="..\..\..\main\Heater.h" />
     <ClInclude Include="..\..\..\main\TemperatureSensor.h" />
   </ItemGroup>
@@ -118,6 +120,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\..\VS\includes\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\esp8266\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\freertos\port\esp8266\include\freertos\;c:\msys32\home\Sasha\esp\Termostat2\build\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\freertos\include\freertos\private\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\freertos\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\heap\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\esp_common\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\heap\port\esp8266\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\spi_flash\include\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\freertos\include\freertos\;c:\msys32\home\Sasha\esp\ESP8266_RTOS_SDK\components\log\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
