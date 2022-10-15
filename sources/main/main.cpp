@@ -15,8 +15,8 @@ static void MainTask(void *cookie)
     {
         UART0::Send("Point 2");
 
-//        auto temp = TemperatureSensor::self->CurrentTemperature();
-//
+//        volatile auto temp = TemperatureSensor::self->CurrentTemperature();
+
 //        if (temp.IsValid())
 //        {
 //            Heater::self->Process(temp.temp);
@@ -34,11 +34,23 @@ extern "C" {
 
 void app_main()
 {
+    volatile int i = 0;
+
+    for (i = 0; i < 100000; i++)
+    {
+
+    }
+
+
     UART0::Init();
+
+    UART0::Send("Point 0");
 
     TemperatureSensor::Init();
 
-//    Heater::Init();
+    UART0::Send("Point 00");
+
+    Heater::Init();
 
 //    Heater::self->SetTargetTemperature(35.0f);
 
