@@ -25,10 +25,7 @@ DataTSensor TemperatureSensor::CurrentTemperature()
 
     DataTSensor result;
 
-    if (ADC::Read(&raw_value))
-    {
-        result.SetTemperature(Calculate(raw_value));
-    }
+    result.SetTemperature(Calculate(raw_value));
 
     return result;
 }
@@ -60,11 +57,17 @@ float TemperatureSensor::CalculateNTC(uint nom_res, uint ser_res, uint16 betaK, 
     steinhart = 1.0 / steinhart;
     steinhart -= 273.15;
 
+    UART0::SendFormat("Temperatrue %f", (float)steinhart);
+
     return (float)steinhart;
 }
 
 
 float TemperatureSensor::AnalogRead()
 {
-    return 0.0f;
+    uint16 raw_value = 0;
+
+    ADC::Read(&raw_value);
+
+    return (float)raw_value;
 }

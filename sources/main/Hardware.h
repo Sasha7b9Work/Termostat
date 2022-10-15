@@ -8,6 +8,8 @@ namespace UART0
     void Init();
 
     void Send(pchar);
+
+    void SendFormat(pchar format, ...);
 }
 
 

@@ -4,6 +4,8 @@
 #include <driver/uart.h>
 #include <driver/adc.h>
 #include <cstring>
+#include <cstdarg>
+#include <cstdio>
 
 
 void UART0::Init()
@@ -23,6 +25,23 @@ void UART0::Init()
 void UART0::Send(pchar message)
 {
     uart_write_bytes(UART_NUM_0, message, std::strlen(message) + 1);
+}
+
+
+void UART0::SendFormat(pchar format, ...)
+{
+    char buffer[128];
+
+    va_list args;
+    va_start(args, format);
+#ifdef _WIN32
+    vsprintf_s(buffer, 100, format, args);
+#else
+    vsprintf(buffer, format, args);
+#endif
+    va_end(args);
+
+    Send(buffer);
 }
 
 
