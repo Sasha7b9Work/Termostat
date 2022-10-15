@@ -17,7 +17,7 @@ static void MainTask(void *cookie)
 
         if (temp.IsValid())
         {
-
+            Heater::self->Process(temp.temp);
         }
 
         vTaskDelay(1000 / portTICK_RATE_MS);
@@ -35,6 +35,8 @@ void app_main()
     UART0::Init();
 
     TemperatureSensor::Create();
+
+    Heater::Create();
 
     xTaskCreate(MainTask, "MainTask", 1024, NULL, 5, NULL);
 }

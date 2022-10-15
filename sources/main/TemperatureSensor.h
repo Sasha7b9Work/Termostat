@@ -30,7 +30,5 @@ public:
 
 private:
 
-    TemperatureSensor();
-
     float Calculate(uint16);
 };

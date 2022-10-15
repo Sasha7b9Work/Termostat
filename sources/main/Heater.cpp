@@ -3,7 +3,18 @@
 #include "Heater.h"
 
 
-void Heater_Process(float temperature)
+Heater *Heater::self = nullptr;
+
+
+void Heater::Create()
+{
+    static Heater heather;
+
+    self = &heather;
+}
+
+
+void Heater::Process(float temperature)
 {
 
 }
