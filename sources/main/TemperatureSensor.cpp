@@ -57,7 +57,7 @@ float TemperatureSensor::CalculateNTC(uint nom_res, uint ser_res, uint16 betaK, 
     steinhart = 1.0 / (steinhart + 0.01);
     steinhart -= 273.15;
 
-    UART0::SendFormat("Temperatrue %f", (float)steinhart);
+    UART0::SendFormat("Temperature %f", (float)steinhart);
 
     return (float)steinhart;
 }

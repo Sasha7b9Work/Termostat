@@ -12,19 +12,11 @@ Heater *Heater::self = nullptr;
 
 void Heater::Init()
 {
-    UART0::Send("Point 000");
-
     static Heater heather;
-
-    UART0::Send("Point 001");
 
     self = &heather;
 
-    UART0::Send("Point 002");
-
     GPIO::Init(PIN_HEATER);
-
-    UART0::Send("Point 003");
 }
 
 
